@@ -6,8 +6,22 @@ Static Bible lookup site. Three-panel tile navigation (book → chapter → vers
 
 ## Current State
 
-- **Version:** v0 in progress
-- **Status:** Project scaffolded. Building.
+- **Version:** v0 shipped
+- **Status:** Live production static app.
+- **Public URL:** https://copybible.app
+- **Vercel fallback:** https://copybible-ivory.vercel.app
+- **GitHub:** https://github.com/Stupidgoat2772/copybible
+- **License:** 0BSD. No attribution requirement; downstream users can copy, modify, sell, or relicense their versions.
+- **Vault integration:** Tracked from the parent vault as a Git submodule at `System/Programs/copybible`.
+
+## Deployment
+
+- **Host:** Vercel
+- **Project:** `copybible`
+- **Vercel account/scope:** `stupidgoat2772-6885`
+- **Production domain:** `copybible.app`
+- **Git integration:** Connected to `Stupidgoat2772/copybible`, branch `main`
+- **Build:** None. Vercel serves the repository root as static output.
 
 ## Before You Start Coding
 
@@ -21,6 +35,8 @@ Static Bible lookup site. Three-panel tile navigation (book → chapter → vers
 
 ```
 copybible/
+├── .gitignore      # Ignores local Vercel metadata/env files
+├── LICENSE         # 0BSD license
 ├── index.html      # Single page
 ├── style.css       # Tile grid layout
 ├── app.js          # Navigation logic + clipboard
@@ -35,3 +51,4 @@ copybible/
 - Owner: Kumo (Damian)
 - Solves: every Bible site is bloated. This is instant lookup + copy.
 - Stack: pure static HTML/CSS/JS. Ship anywhere.
+- Current primary domain is `copybible.app`; `.bible` was skipped because Vercel/domain setup had unsupported-TLD friction.
