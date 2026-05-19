@@ -1,0 +1,234 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0a0c10;
+  --surface: #121620;
+  --tile: #161b26;
+  --tile-hover: #1c2333;
+  --tile-active: #243044;
+  --text: #d8dce6;
+  --text-dim: #6b7a94;
+  --accent: #4a9eff;
+  --accent-dim: rgba(74, 158, 255, 0.12);
+  --accent-strong: rgba(74, 158, 255, 0.25);
+  --copy-flash: #2e7d32;
+  --radius: 6px;
+  --font: "SF Mono", "Fira Code", "Consolas", monospace;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  min-height: 100vh;
+  padding: 1.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+header {
+  margin-bottom: 1.5rem;
+}
+
+#site-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  cursor: pointer;
+  display: inline-block;
+}
+
+#breadcrumb {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  min-height: 1.2em;
+}
+
+#breadcrumb span {
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+#breadcrumb span:hover {
+  color: var(--accent);
+}
+
+/* Search */
+#search-bar {
+  margin-bottom: 1rem;
+}
+
+#search {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  background: var(--surface);
+  border: 1px solid #1e2636;
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+#search:focus {
+  border-color: var(--accent);
+}
+
+/* Tile grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 8px;
+}
+
+.tile-grid.numbers {
+  grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));
+}
+
+.tile {
+  background: var(--tile);
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  padding: 0.55rem 0.4rem;
+  text-align: center;
+  cursor: pointer;
+  font-size: 0.82rem;
+  transition: background 0.12s, border-color 0.12s;
+  user-select: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tile:hover {
+  background: var(--tile-hover);
+  border-color: var(--accent);
+}
+
+.tile:active {
+  background: var(--tile-active);
+}
+
+/* Verse tiles bar */
+.verse-tiles {
+  margin-bottom: 0;
+}
+
+.tile-active {
+  background: var(--accent) !important;
+  color: var(--bg) !important;
+  border-color: var(--accent) !important;
+}
+
+/* Chapter view — full verse list */
+#chapter-view {
+  display: none;
+}
+
+#chapter-view.active {
+  display: block;
+}
+
+.verse-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.5rem 0.6rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.1s;
+  position: relative;
+  line-height: 1.65;
+}
+
+.verse-row:hover {
+  background: var(--accent-dim);
+}
+
+.verse-row.selected {
+  background: var(--accent-strong);
+  border-radius: 0;
+}
+
+.verse-row.sel-first {
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.verse-row.sel-last {
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.verse-row.sel-first.sel-last {
+  border-radius: var(--radius);
+}
+
+.verse-row.jumped {
+  background: var(--accent-dim);
+  transition: background 0.3s;
+}
+
+.verse-num {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  min-width: 2rem;
+  text-align: right;
+  padding-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.verse-body {
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+/* Toast notification */
+#toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(1rem);
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--font);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--radius);
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 200;
+  pointer-events: none;
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+
+  .tile-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+
+  .tile-grid.numbers {
+    grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+  }
+
+  .verse-body {
+    font-size: 0.9rem;
+  }
+}
