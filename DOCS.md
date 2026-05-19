@@ -24,4 +24,6 @@ Public domain. No license restrictions.
 
 ## License
 
-CopyBible code is released under the ISC License. The KJV text data is public domain.
+CopyBible code is released under the Zero-Clause BSD license (`0BSD`). Use it, copy it, modify it, sell it, relicense your version, and ship it without attribution requirements.
+
+The KJV text data is public domain.
