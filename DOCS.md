@@ -21,3 +21,7 @@ Drop the folder contents on any static host. No build step required.
 `kjv.json` contains the full KJV Bible as nested JSON. Structure: `book → chapter → verse → text`.
 
 Public domain. No license restrictions.
+
+## License
+
+CopyBible code is released under the ISC License. The KJV text data is public domain.
